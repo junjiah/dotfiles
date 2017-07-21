@@ -90,7 +90,7 @@ au BufNewFile,BufRead *.js set expandtab
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YouCompleter GoToDefinitionElseDeclaration<CR>
 
-"python with virtualenv support
+" Python with virtualenv support.
 py << EOF
 import os
 import sys
@@ -114,6 +114,57 @@ else
   color nova
   color ink
 endif
+
+" OCaml, with Merlin and ocp-indent.
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+let g:syntastic_ocaml_checkers = ['merlin']
+execute "set rtp^=" . g:opamshare . "/ocp-indent/vim"
+autocmd FileType ocaml map gd :MerlinLocate
+
+" OCaml format.
+au BufNewFile,BufRead *.ml set tabstop=2
+au BufNewFile,BufRead *.ml set softtabstop=2
+au BufNewFile,BufRead *.ml set shiftwidth=2
+au BufNewFile,BufRead *.ml set expandtab
+au BufNewFile,BufRead *.ml set autoindent
+au BufNewFile,BufRead *.ml set fileformat=unix
+autocmd BufWritePre *.ml %s/\s\+$//e
+
+" Makefile.
+au FileType make setlocal shiftwidth=2 tabstop=2
+" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
+let s:opam_share_dir = system("opam config var share")
+let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+
+let s:opam_configuration = {}
+
+function! OpamConfOcpIndent()
+  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+endfunction
+let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+
+function! OpamConfOcpIndex()
+  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+endfunction
+let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+
+function! OpamConfMerlin()
+  let l:dir = s:opam_share_dir . "/merlin/vim"
+  execute "set rtp+=" . l:dir
+endfunction
+let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+
+let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
+let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+for tool in s:opam_packages
+  " Respect package order (merlin should be after ocp-index)
+  if count(s:opam_available_tools, tool) > 0
+    call s:opam_configuration[tool]()
+  endif
+endfor
+" ## end of OPAM user-setup addition for vim / base ## keep this line
 
 " Learned from https://github.com/begriffs/haskell-vim-now/blob/master/.vimrc
 
