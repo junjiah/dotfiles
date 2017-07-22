@@ -19,13 +19,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 let NERDTreeIgnore=['\.pyc$', '\~$'] " Ignore files in NERDTree
 Plugin 'kien/ctrlp.vim'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 " Always show statusline
 set laststatus=2
 Plugin 'airblade/vim-gitgutter'
 Plugin 'trevordmiller/nova-vim'
-Plugin 'git@bitbucket.org:kisom/eink.vim.git' 
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline_theme = 'monochrome'
 
 " After adding plugins.
 call vundle#end()
@@ -241,7 +241,6 @@ nnoremap <leader>bd :bd<cr>
 nnoremap <leader>b<space> :CtrlPBuffer<cr>
 
 map <leader>ss :setlocal spell!<cr>
-
 
 function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
