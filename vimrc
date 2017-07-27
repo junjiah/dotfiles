@@ -26,6 +26,7 @@ Plugin 'trevordmiller/nova-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme = 'monochrome'
+Plugin 'kshenoy/vim-signature'
 
 " After adding plugins.
 call vundle#end()
@@ -258,3 +259,7 @@ nmap <silent> <leader>f <ESC>:call ToggleFindNerd()<CR>
 nmap <silent> <leader>F <ESC>:NERDTreeToggle<CR>
 
 set completeopt+=longest
+
+" Map Ctrl-S to saving in both normal and insert mode.
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <ESC>:w<CR>
