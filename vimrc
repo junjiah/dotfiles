@@ -61,6 +61,7 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 0
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 0
+let g:go_echo_command_info = 0
 augroup go
   autocmd!
   autocmd Filetype go
@@ -264,3 +265,6 @@ set completeopt+=longest
 " Map Ctrl-S to saving in both normal and insert mode.
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
+
+" Use :w!! to save with sudo.
+cmap w!! %!sudo tee > /dev/null %
