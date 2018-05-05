@@ -22,6 +22,9 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] " Ignore files in NERDTree
 Plugin 'kien/ctrlp.vim'
 " Always show statusline
 set laststatus=2
+Plugin 'flazz/vim-colorschemes'
+Plugin 'elmcast/elm-vim'
+let g:elm_format_autosave = 1
 Plugin 'airblade/vim-gitgutter'
 Plugin 'trevordmiller/nova-vim'
 Plugin 'vim-airline/vim-airline'
@@ -104,7 +107,6 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 let python_highlight_all=1
-
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 
