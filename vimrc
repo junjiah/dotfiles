@@ -31,6 +31,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme = 'monochrome'
 Plugin 'kshenoy/vim-signature'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 " After adding plugins.
 call vundle#end()
