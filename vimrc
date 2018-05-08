@@ -15,6 +15,10 @@ Plugin 'git@github.com:fatih/vim-go.git'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
+let g:syntastic_aggregate_errors = 1
+" Disable syntastic by default.
+autocmd VimEnter * SyntasticToggleMode
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -55,10 +59,10 @@ map <C-_> <C-o>
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
-let g:go_metalinter_deadline = "5s"
+let g:go_metalinter_deadline = "15s"
 let g:go_snippet_case_type = "camelcase"
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['golint']
+let g:go_metalinter_autosave_enabled = ['golint', 'vet', 'errcheck']
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
 let g:go_highlight_types = 1
@@ -98,7 +102,7 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YouCompleter GoToDefinitionElseDeclaration<CR>
 
 " Python with virtualenv support.
-py << EOF
+py3 << EOF
 import os
 import sys
 if 'VIRTUAL_ENV' in os.environ:
