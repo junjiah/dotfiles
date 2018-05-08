@@ -91,7 +91,6 @@ alias c='clear'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias disk='df -mh'
-alias vi='mvim -v'
 alias f='find . | grep'
 alias spoton='sudo mdutil -a -i on'
 alias spotoff='sudo mdutil -a -i off'
@@ -119,6 +118,8 @@ antigen theme robbyrussell
 antigen apply
 
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+source ~/.iterm2.zsh
 
 # Auto source venv.
 PROMPT_COMMAND='prompt'
