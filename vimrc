@@ -15,6 +15,8 @@ Plugin 'git@github.com:fatih/vim-go.git'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_exec = 'python3'
+let g:syntastic_python_flake8_args = ['-m', 'flake8']
 let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
 let g:syntastic_aggregate_errors = 1
 " Disable syntastic by default.
