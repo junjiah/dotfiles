@@ -4,6 +4,10 @@ set autowrite
 set nu
 filetype off
 
+if ! exists("g:mapleader")
+  let mapleader = ","
+endif
+
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -38,6 +42,15 @@ Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme = 'monochrome'
 Plugin 'kshenoy/vim-signature'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'scrooloose/nerdcommenter'
+let g:NERDSpaceDelims = 1
+let g:NERDTrimTrailingWhitespace = 1
+Plugin 'mileszs/ack.vim.git'
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
+endif
+cnoreabbrev Ack Ack!
+nnoremap <leader>a :Ack!<Space>
 
 " After adding plugins.
 call vundle#end()
@@ -52,7 +65,8 @@ nnoremap <C-H> <C-W><C-H>
 " Quick nav for errors.
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
+nnoremap <leader>c :cclose<CR>
+nnoremap <leader>o :copen<CR>
 
 " Nav back.
 map <C-_> <C-o>
@@ -179,10 +193,6 @@ endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
 
 " Learned from https://github.com/begriffs/haskell-vim-now/blob/master/.vimrc
-
-if ! exists("g:mapleader")
-  let mapleader = ","
-endif
 
 set tm=2000
 
