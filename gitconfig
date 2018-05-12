@@ -1,0 +1,36 @@
+[core]
+    excludesfile = ~/.gitignore_global
+    autocrlf = input
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
+[color]
+    ui = true
+[push]
+    default = matching
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
+[alias]
+    co = checkout
+    cob = checkout -b
+    f = fetch -p
+    c = commit
+    p = push
+    ba = branch -a
+    bd = branch -d
+    bD = branch -D
+    dc = diff --cached
+    st = status -sb
+    plog = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    tlog = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+    glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    stash-all = stash save --include-untracked
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[status]
+    showUntrackedFiles = all
