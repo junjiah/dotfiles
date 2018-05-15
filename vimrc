@@ -51,6 +51,7 @@ if executable('rg')
 endif
 cnoreabbrev Ack Ack!
 nnoremap <leader>a :Ack!<Space>
+Plugin 'tomlion/vim-solidity'
 
 " After adding plugins.
 call vundle#end()
