@@ -17,14 +17,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'git@github.com:fatih/vim-go.git'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'scrooloose/syntastic'
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_exec = 'python3'
-let g:syntastic_python_flake8_args = ['-m', 'flake8']
-let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
-let g:syntastic_aggregate_errors = 1
-" Disable syntastic by default.
-autocmd VimEnter * SyntasticToggleMode
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -52,6 +44,13 @@ endif
 cnoreabbrev Ack Ack!
 nnoremap <leader>a :Ack!<Space>
 Plugin 'tomlion/vim-solidity'
+Plugin 'w0rp/ale'
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+let g:ale_linters = {
+\   'go': ['go', 'golint', 'govet', 'errcheck'],
+\   'solidity': ['solium']
+\}
 
 " After adding plugins.
 call vundle#end()
@@ -73,7 +72,7 @@ nnoremap <leader>o :copen<CR>
 map <C-_> <C-o>
 
 " Go.
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 let g:go_metalinter_deadline = "15s"
@@ -94,6 +93,9 @@ augroup go
     \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
     \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 augroup END
+
+" Solidity.
+autocmd BufNewFile,BufRead *.sol setlocal expandtab tabstop=4 shiftwidth=4
 
 " PEP8.
 au BufNewFile,BufRead *.py set tabstop=4
