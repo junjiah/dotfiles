@@ -56,6 +56,33 @@ let g:ale_linters = {
 call vundle#end()
 filetype plugin indent on
 
+" General editing. From https://github.com/sebdah/dotfiles
+set autoindent                    " take indent for new line from previous line
+set smartindent                   " enable smart indentation
+set autoread                      " reload file if the file changes on the disk
+set autowrite                     " write when switching buffers
+set autowriteall                  " write on :quit
+set cursorline                    " highlight the current line for the cursor
+set encoding=utf-8
+set noswapfile                    " disable swapfile usage
+set noerrorbells                  " No bells!
+set novisualbell                  " I said, no bells!
+set ruler
+set formatoptions=tcqron          " set vims text formatting options
+set softtabstop=2
+set tabstop=2
+set title                         " let vim set the terminal title
+set updatetime=100                " redraw the status bar often
+autocmd BufLeave * silent! :wa    " Autosave buffers before leaving them
+
+" Remove trailing white spaces on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" These mappings will make it so that going to the next one in a search will
+" center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 " Split navigations.
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -162,7 +189,8 @@ autocmd BufWritePre *.ml %s/\s\+$//e
 
 " Makefile.
 au FileType make setlocal shiftwidth=2 tabstop=2
-" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
+
+" Added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
 let s:opam_share_dir = system("opam config var share")
 let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
 
