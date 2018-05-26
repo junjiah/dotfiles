@@ -9,8 +9,11 @@
   "editor.renderIndentGuides": true,
   "editor.formatOnType": true,
   "editor.scrollBeyondLastLine": false,
-  "eslint.autoFixOnSave": true,
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
   "editor.detectIndentation": true,
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
   "files.exclude": {
     "**/.tmp": true,
     "**/vendor": false,
@@ -42,8 +45,6 @@
   "python.linting.enabled": false,
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": false,
-  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontLigatures": true,
   "stylishHaskell.showConsoleOnError": false,
   "workbench.colorTheme": "White",
   "[solidity]": {}
