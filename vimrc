@@ -49,8 +49,14 @@ let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_linters = {
 \   'go': ['go', 'golint', 'govet', 'errcheck'],
-\   'solidity': ['solium']
+\   'solidity': ['solium'],
+\   'python': ['pylint', 'black']
 \}
+let g:ale_fixers = {
+\   'python': ['black']
+\}
+let g:ale_fix_on_save = 1
+Plugin 'ambv/black'
 
 " After adding plugins.
 call vundle#end()
