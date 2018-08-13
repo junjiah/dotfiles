@@ -126,7 +126,7 @@ augroup go
 augroup END
 
 " Solidity.
-autocmd BufNewFile,BufRead *.sol setlocal expandtab tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *.sol setlocal expandtab tabstop=2 shiftwidth=2
 
 " PEP8.
 au BufNewFile,BufRead *.py set tabstop=4
