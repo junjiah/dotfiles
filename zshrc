@@ -150,3 +150,5 @@ eval `opam config env`
 . /Users/junjiah/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 brew analytics off 2>&1 >/dev/null
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
