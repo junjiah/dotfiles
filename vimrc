@@ -15,7 +15,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'git@github.com:fatih/vim-go.git'
+Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
@@ -57,6 +57,7 @@ let g:ale_fixers = {
 \}
 let g:ale_fix_on_save = 1
 Plugin 'ambv/black'
+Plugin 'tpope/vim-fugitive.git'
 
 " After adding plugins.
 call vundle#end()
