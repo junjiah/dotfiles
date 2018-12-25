@@ -107,10 +107,7 @@ map <C-_> <C-o>
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
-let g:go_metalinter_deadline = "15s"
 let g:go_snippet_case_type = "camelcase"
-let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['golint', 'vet', 'errcheck']
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
 let g:go_highlight_types = 1
@@ -121,10 +118,15 @@ let g:go_echo_command_info = 0
 augroup go
   autocmd!
   autocmd Filetype go
-    \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-    \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-    \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+    \ command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+    command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+    command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 augroup END
+augroup auto_go
+  autocmd!
+  autocmd BufWritePost *.go :GoVet
+augroup end
+
 
 " Solidity.
 autocmd BufNewFile,BufRead *.sol setlocal expandtab tabstop=2 shiftwidth=2
