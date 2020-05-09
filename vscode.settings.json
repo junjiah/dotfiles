@@ -5,11 +5,13 @@
   "editor.roundedSelection": true,
   "editor.glyphMargin": true,
   "editor.lineNumbers": "on",
-  "editor.rulers": [100],
+  "editor.rulers": [
+    100
+  ],
   "editor.renderIndentGuides": true,
   "editor.formatOnType": true,
   "editor.scrollBeyondLastLine": false,
-  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "Dank Mono, Fira Code, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.detectIndentation": true,
   "eslint.enable": true,
@@ -39,13 +41,82 @@
     "editor.formatOnSave": true
   },
   "go.autocompleteUnimportedPackages": true,
-  "go.lintFlags": ["--enable=errcheck"],
+  "go.lintFlags": [
+    "--enable=errcheck"
+  ],
   "javascript.format.enable": false,
   "window.zoomLevel": 1,
   "python.linting.enabled": false,
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": false,
   "stylishHaskell.showConsoleOnError": false,
-  "workbench.colorTheme": "White",
-  "[solidity]": {}
+  "workbench.colorTheme": "Minimal Colors",
+  "[solidity]": {},
+  "python.formatting.provider": "black",
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "c",
+    "cpp",
+    "csharp",
+    "css",
+    "go",
+    "handlebars",
+    "html",
+    "jade",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "latex",
+    "less",
+    "markdown",
+    "php",
+    "plaintext",
+    "pub",
+    "restructuredtext",
+    "rust",
+    "scss",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "yml",
+    "sol"
+  ],
+  "solidity.packageDefaultDependenciesContractsDirectory": "",
+  "solidity.packageDefaultDependenciesDirectory": "node_modules",
+  "cSpell.language": "en",
+  "yaml.format.proseWrap": "never",
+  "yaml.format.enable": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "aeschli.vscode-css-formatter"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "go.useLanguageServer": true,
+  "solidity.linter": false,
+  "vim.statusBarColorControl": true,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f",
+    "statusBar.debuggingBackground": "#005f5f"
+  },
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    }
+  ],
+  "vim.leader": "\\",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-e>": false
+  }
 }
