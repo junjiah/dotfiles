@@ -23,9 +23,11 @@ Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 let NERDTreeIgnore=['\.pyc$', '\~$'] " Ignore files in NERDTree
-Plugin 'kien/ctrlp.vim'
+Plugin 'vim-ctrlspace/vim-ctrlspace'
 " Always show statusline
 set laststatus=2
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 Plugin 'flazz/vim-colorschemes'
 Plugin 'elmcast/elm-vim'
 let g:elm_format_autosave = 1
@@ -50,7 +52,7 @@ Plugin 'w0rp/ale'
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_linters = {
-\   'go': ['go', 'golint', 'govet', 'errcheck'],
+\   'go': ['gopls', 'go', 'golint', 'govet', 'errcheck'],
 \   'solidity': ['solium'],
 \   'python': ['pylint', 'black']
 \}
@@ -117,6 +119,8 @@ let g:go_highlight_fields = 0
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 0
 let g:go_echo_command_info = 0
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
 augroup go
   autocmd!
   autocmd Filetype go
@@ -168,7 +172,6 @@ EOF
 
 let python_highlight_all=1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 
 " GUI fonts.
 set guifont=SourceCodePro+Powerline+Awesome\ Regular:h12
@@ -277,10 +280,14 @@ set nowb
 set noswapfile
 
 nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-nnoremap <silent> <Leader><space> :CtrlP<CR>
-let g:ctrlp_max_files=0
-let g:ctrlp_show_hidden=1
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
+
+nnoremap <silent> <Leader><space> :CtrlSpace O<CR>
+let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
+if executable("ag")
+  let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+endif
 
 nnoremap j gj
 nnoremap k gk
